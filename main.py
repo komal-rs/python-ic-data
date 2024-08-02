@@ -19,12 +19,12 @@ if __name__ == "__main__":
     # print(canisters_list)
 
     # read canisters.txt as json and get json["targets"] to get canister_list
-    with open("canisters.txt", "r") as file:
-        canisters_list = json.load(file)[0]["targets"]
+    # with open("canisters.txt", "r") as file:
+    #     canisters_list = json.load(file)[0]["targets"]
 
     iden = Identity()
     client = Client(
-        url="https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/"
+        url="https://ic0.app"
     )  # replace with https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/ for mainnet
     agent = Agent(iden, client)
 
@@ -39,14 +39,14 @@ if __name__ == "__main__":
     # print(res)
     # print()
 
-    params = [
-        {"type": Types.Nat, "value": 0},
-        {"type": Types.Nat, "value": 10},
-    ]
+    # params = [
+    #     {"type": Types.Nat64, "value": 0},
+    #     {"type": Types.Nat64, "value": 10},
+    # ]
     res = agent.query_raw(
         canister_id,
-        "get_posts_of_this_user_profile_with_pagination_cursor",
-        encode(params),
+        "get_watch_history",
+        encode([]),
     )
     print(res)
     print()
